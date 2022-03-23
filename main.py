@@ -15,9 +15,9 @@ while joueur_un != test or joueur_deux != test:
 
     if joueur_un == "":
         exit()
-    if joueur_un < test:
+    if int(joueur_un) < test:
         print ("plus haut")        
-    elif joueur_un > test:
+    elif int(joueur_un) > test:
         print("plus bas")
     else:
         print("-" * 20)
@@ -28,12 +28,12 @@ while joueur_un != test or joueur_deux != test:
 
     joueur_deux = input("Joueur 2 saisie un nombre : ")
     compteur_joueur_deux = compteur_joueur_deux + 1
-    
+
     if joueur_deux == "":
         exit()
-    if joueur_deux < test:
+    if int(joueur_deux) < test:
         print("Plus haut")
-    elif joueur_deux > test:
+    elif int(joueur_deux) > test:
         print("Plus bas")
     else:
         print("-" * 20)
