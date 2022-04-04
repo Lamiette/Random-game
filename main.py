@@ -3,7 +3,7 @@ floor = 0
 roof = 101
 nbr_to_guess = randint(floor,roof)
 
-print(nbr_to_guess)
+print("Nombre a deviner : " + str(nbr_to_guess))
 
 joueur_un = 0
 compteur_joueur_un = 0
@@ -49,28 +49,31 @@ while joueur_un != nbr_to_guess or joueur_deux != nbr_to_guess or joueur_bot != 
 
     
     compteur_joueur_bot += 1
-    print("-" *20)
+    # print("-" *20)
     
-    print(joueur_bot)
+    # print(joueur_bot)
     historique_bot=[]
     historique_bot.append(joueur_bot)
+    
+    # Tu fais sauter son tour au bot le premier tour? :o
     if compteur_joueur_un == 1 or compteur_joueur_deux == 1:
         continue
         compteur_joueur_bot += 1
 
     elif joueur_bot != nbr_to_guess:
         if int(joueur_bot) < nbr_to_guess:
+            print("Le bot a joué " + str(joueur_bot))            
             print("Plus haut")
-            floor = joueur_bot
+            floor = joueur_bot + 1 # quand tu fais un randint(x,y), x est inclusif alors que y est exclusif; c'est pour ça que le bot peut retirer x. J'ai ajouté un +1 pour éviter ça
             joueur_bot = randint(floor,roof)
             historique_bot.append(joueur_bot)
-            print(joueur_bot)
         else:
+            print("Le bot a joué " + str(joueur_bot))            
             print("Plus bas")
             roof = joueur_bot
             joueur_bot = randint(floor,roof)
             historique_bot.append(joueur_bot)
-            print(joueur_bot)
+        print("Nouveau seuil du bot : " + str(floor) + ' - ' + str(roof))
     else :
          print("Le bot l'emporte")
          break
