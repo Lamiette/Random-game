@@ -36,3 +36,27 @@ for z in liste_joueur:
             print("-" * 20)
             print("Joueur "+z+" l'emporte")
             break
+
+joueur_bot = 0
+
+for x in liste_bot:
+
+    while joueur_bot != nbr_to_guess:
+        
+        if int(joueur_bot) < nbr_to_guess:
+            print("Plus haut")
+            floor = joueur_bot +1
+            joueur_bot = randint(floor,roof)            
+            print(joueur_bot)
+            
+        else:
+            print("Plus bas")
+            roof = joueur_bot -1
+            joueur_bot = randint(floor,roof)
+            print(joueur_bot)
+            
+    else :
+         print("Le bot l'emporte")
+         break
+
+
