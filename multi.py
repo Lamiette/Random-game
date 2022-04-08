@@ -10,6 +10,7 @@ liste_bot = []
 
 nombre_de_joueur = int(input("Entrez le nombre de joueur : "))
 nombre_de_bot = int(input("Entrez le nombre de Bot : "))
+
 for x in range(nombre_de_joueur) :
     liste_joueur.append(str(input("Entrez votre nom : "))) 
 
@@ -22,14 +23,14 @@ print("Voici la liste des Bots :" ,*liste_bot, sep='\n')
 
 
 for z in liste_joueur:
-    
-    while z != nbr_to_guess:
-        z=input("Joueur "+ z +" Saisissez un nombre : ")
-        if z == "":
+    y = ""
+    while y != nbr_to_guess:
+        y=input("Joueur "+ z +" Saisissez un nombre : ")
+        if y == "":
             exit()
-        if int(z) < nbr_to_guess:
+        if int(y) < nbr_to_guess:
             print ("plus haut")        
-        elif int(z) > nbr_to_guess:
+        elif int(y) > nbr_to_guess:
             print("plus bas")
         else:
             print("-" * 20)
