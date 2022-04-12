@@ -1,94 +1,90 @@
-from random import *
+import random
+from random import randint
 floor = 0
 roof = 101
 nbr_to_guess = randint(floor,roof)
 
 print(nbr_to_guess)
 
-joueur_un = 0
-compteur_joueur_un = 0
+liste_joueur = []
+liste_bot = []
+prenom_bot = ['Giovanni','Marcelo','Thibaut','Idefix','Tartuffe','Gontrand','Jean']
 
-joueur_deux = 0
-compteur_joueur_deux = 0
-
-joueur_bot = randint(floor,roof)
-compteur_joueur_bot = 0
-
-# z = int(input("Tentative max : "))
-while joueur_un != nbr_to_guess or joueur_deux != nbr_to_guess or joueur_bot != nbr_to_guess:
-
-    joueur_un = input("Joueur 1 saisis un nombre : ")
-    compteur_joueur_un += 1
-
-    if joueur_un == "":
-        exit()
-    if int(joueur_un) < nbr_to_guess:
-        print ("plus haut")        
-    elif int(joueur_un) > nbr_to_guess:
-        print("plus bas")
-    else:
-        print("-" * 20)
-        print("Joueur 1 l'emporte")
+while True:
+    try:
+        nombre_de_joueur = int(input("Entrez le nombre de joueur : "))
         break
-       
+    except ValueError:
+        print("-"*27)
+        print("Veuillez entrer un nombre !")
+        print("-"*27)
 
-
-    joueur_deux = input("Joueur 2 saisie un nombre : ")
-    compteur_joueur_deux += 1
-
-    if joueur_deux == "":
-        exit()
-    if int(joueur_deux) < nbr_to_guess:
-        print("Plus haut")
-    elif int(joueur_deux) > nbr_to_guess:
-        print("Plus bas")
-    else:
-        print("-" * 20)
-        print("Joueur 2 l'emporte")
+while True:
+    try:
+        nombre_de_bot = int(input("Entrez le nombre de Bot : "))
         break
+    except ValueError:
+        print("-"*27)
+        print("Veuillez entrer un nombre !")
+        print("-"*27)
 
-    
-    compteur_joueur_bot += 1
-    print("-" *20)
-    
-    print(joueur_bot)
-    historique_bot=[]
-    historique_bot.append(joueur_bot)
-    if compteur_joueur_un == 1 or compteur_joueur_deux == 1:
-        continue
-        compteur_joueur_bot += 1
 
-    elif joueur_bot != nbr_to_guess:
+for x in range(nombre_de_joueur) :
+    liste_joueur.append(str(input("Entrez votre nom : "))) 
+
+
+for y in range(nombre_de_bot) :
+    liste_bot = random.sample(prenom_bot, nombre_de_bot)
+    
+    
+
+print("-"*25)
+print("Voici la liste des joueurs :","\n",*liste_joueur, sep="\n")
+print("-"*25)  
+print("Voici la liste des Bots :","\n",*liste_bot, sep='\n')
+print("-"*25)
+
+
+for z in liste_joueur:
+    y = ""
+    cpt_joueur=0
+    while y != nbr_to_guess:
+        cpt_joueur += 1
+        y=input("Joueur "+ z +" Saisissez un nombre : ")
+        if y == "":
+            exit()
+        if int(y) < nbr_to_guess:
+            print ("Plus haut")        
+        elif int(y) > nbr_to_guess:
+            print("Plus bas")
+        else:
+            print("-" * 20)
+            if cpt_joueur < 2:
+                print("Joueur "+z+" l'emporte en",cpt_joueur,"coup")
+            else:
+                print("Joueur "+z+" l'emporte en",cpt_joueur,"coups")
+            break
+
+joueur_bot = 0
+
+for x in liste_bot:
+
+    while joueur_bot != nbr_to_guess:
+        
         if int(joueur_bot) < nbr_to_guess:
             print("Plus haut")
-            floor = joueur_bot
-            joueur_bot = randint(floor,roof)
-            historique_bot.append(joueur_bot)
+            floor = joueur_bot +1
+            joueur_bot = randint(floor,roof)            
             print(joueur_bot)
+            
         else:
             print("Plus bas")
-            roof = joueur_bot
+            roof = joueur_bot -1
             joueur_bot = randint(floor,roof)
-            historique_bot.append(joueur_bot)
             print(joueur_bot)
+            
     else :
          print("Le bot l'emporte")
          break
 
 
-        
-    
-# if y == z:         
-#    print("nombre essai dépassé")       
-
-print("-" * 20)
-print ("La réponse était : ", nbr_to_guess)
-print("-" * 20)
-print("Nombre essai joueur 1 :", compteur_joueur_un)
-print("-" * 20)
-print("Nombre essai joueur 2 :", compteur_joueur_deux)
-print("-" * 20)
-print("Nombre essai Bot :", compteur_joueur_bot)
-print("-" * 20)
-
-print(historique_bot)
