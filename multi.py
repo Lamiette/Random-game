@@ -69,8 +69,9 @@ joueur_bot = 0
 
 for x in liste_bot:
 
+    cpt_bot = 0
     while joueur_bot != nbr_to_guess:
-        
+        cpt_bot += 1
         if int(joueur_bot) < nbr_to_guess:
             print("Plus haut")
             floor = joueur_bot +1
@@ -84,7 +85,7 @@ for x in liste_bot:
             print(joueur_bot)
             
     else :
-         print("Le bot l'emporte")
+         print("Le bot "+x+ " l'emporte en ",cpt_bot," coups")
          break
 
 
