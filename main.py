@@ -16,6 +16,7 @@ print(nbr_to_guess)
 
 liste_joueur = []
 liste_bot = []
+liste_finale = []
 prenom_bot = ['Giovanni','Marcelo','Thibaut','Idefix','Tartuffe','Gontrand','Jean']
 
 while True:
@@ -105,16 +106,11 @@ for joueur in liste_bot:
             break
 
 
+liste_finale = liste_bot + liste_joueur
 
-liste_joueur.sort(key=lambda joueur: joueur.score)
-
-print("Le joueur",liste_joueur[0].prenom,"remporte la partie en",liste_joueur[0].score,"tentatives")
-print("Le joueur",liste_joueur[1].prenom,"termine 2ème en",liste_joueur[1].score,"tentatives")
-print("Le joueur",liste_joueur[2].prenom,"termine 3ème en",liste_joueur[2].score,"tentatives")
-
-liste_bot.sort(key=lambda joueur: joueur.score)
+liste_finale.sort(key=lambda joueur: joueur.score)
 
 print("-" * 20)
-print("Le joueur",liste_bot[0].prenom,"remporte la partie en",liste_bot[0].score,"tentatives")
-print("Le joueur",liste_bot[1].prenom,"termine 2ème en",liste_bot[1].score,"tentatives")
-print("Le joueur",liste_bot[2].prenom,"termine 3ème en",liste_bot[2].score,"tentatives")
+print("Le joueur",liste_finale[0].prenom,"remporte la partie en",liste_finale[0].score,"tentatives","\n")
+print("Le joueur",liste_finale[1].prenom,"termine 2ème en",liste_finale[1].score,"tentatives","\n")
+print("Le joueur",liste_finale[2].prenom,"termine 3ème en",liste_finale[2].score,"tentatives")
