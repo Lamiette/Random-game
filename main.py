@@ -1,5 +1,5 @@
 import random
-from random import randint
+from random import randint, sample
 
 
 class joueur:
@@ -8,9 +8,8 @@ class joueur:
         self.score = score
 
         
-floor = 0
-roof = 101
-nbr_to_guess = randint(floor,roof)
+
+nbr_to_guess = randint(1,101)
 
 print(nbr_to_guess)
 
@@ -83,8 +82,13 @@ for joueur in liste_joueur:
 
 
 for joueur in liste_bot:
-    tentative_bot = 0
-    joueur.score=0
+    floor = 0
+    roof = 101    
+    tentative_bot = randint(floor,roof)
+    joueur.score=1
+    print("Le joueur "+joueur.prenom+" commence avec :",tentative_bot)
+    print("-" * 9)
+
     while tentative_bot != nbr_to_guess:
         joueur.score += 1
         if int(tentative_bot) < nbr_to_guess:
@@ -92,14 +96,16 @@ for joueur in liste_bot:
             floor = tentative_bot +1
             tentative_bot = randint(floor,roof)            
             print(tentative_bot)
+            print("-" * 9)
             
         elif int(tentative_bot) > nbr_to_guess:
             print("Plus bas")
             roof = tentative_bot -1
             tentative_bot = randint(floor,roof)
             print(tentative_bot)
+            print("-" * 9)
             
-        elif int(tentative_bot) == nbr_to_guess:
+        else:
             print("-" * 20)
             print("Partie Finit !")
             print("-" * 20)
@@ -111,6 +117,12 @@ liste_finale = liste_bot + liste_joueur
 liste_finale.sort(key=lambda joueur: joueur.score)
 
 print("-" * 20)
-print("Le joueur",liste_finale[0].prenom,"remporte la partie en",liste_finale[0].score,"tentatives","\n")
-print("Le joueur",liste_finale[1].prenom,"termine 2ème en",liste_finale[1].score,"tentatives","\n")
-print("Le joueur",liste_finale[2].prenom,"termine 3ème en",liste_finale[2].score,"tentatives")
+if len(liste_finale)==1:
+    print("Le joueur",liste_finale[0].prenom,"remporte la partie en",liste_finale[0].score,"tentatives","\n")
+elif len(liste_finale)==2:
+    print("Le joueur",liste_finale[0].prenom,"remporte la partie en",liste_finale[0].score,"tentatives","\n")
+    print("Le joueur",liste_finale[1].prenom,"termine 2ème en",liste_finale[1].score,"tentatives","\n")
+else:
+    print("Le joueur",liste_finale[0].prenom,"remporte la partie en",liste_finale[0].score,"tentatives","\n")
+    print("Le joueur",liste_finale[1].prenom,"termine 2ème en",liste_finale[1].score,"tentatives","\n")
+    print("Le joueur",liste_finale[2].prenom,"termine 3ème en",liste_finale[2].score,"tentatives")
